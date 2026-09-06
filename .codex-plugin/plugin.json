@@ -17,5 +17,6 @@
     "jojo",
     "team"
   ],
-  "homepage": "https://github.com/chronista-club/plugin-team-bucciarati"
+  "homepage": "https://github.com/chronista-club/plugin-team-bucciarati",
+  "skills": "./skills/"
 }

@@ -1,10 +1,19 @@
 ---
 name: santa-method
-description: 多 agent 敵対的検証 (adversarial verification) と収束 loop。文脈を共有しない独立 2 reviewer — Moody Blues × Sticky Fingers — が両方 PASS するまで output を出荷しない。high-stakes な成果物の ship 前最終ゲート。
-version: 2.0.0
-origin: Ronald Skelton (RapportScore.ai) — chronista 適合 fork (via ECC)、team-bucciarati 統合版
-tags: [verification, adversarial, dual-review, convergence, quality-gate]
+description: 多 agent 敵対的検証 (adversarial verification) と収束 loop。文脈を共有しない独立 2 reviewer
+  — Moody Blues × Sticky Fingers — が両方 PASS するまで output を出荷しない。high-stakes な成果物の ship
+  前最終ゲート。
+metadata:
+  version: 0.20.0
+  origin: Ronald Skelton (RapportScore.ai) — chronista 適合 fork (via ECC)、team-bucciarati
+    統合版
+  tags: verification, adversarial, dual-review, convergence, quality-gate
 ---
+
+## ホスト共通の読み方
+
+このディレクトリが共有定義の正本。Claude Code は `.claude-plugin`、Codex は `.codex-plugin` から同じ skills を読む。Grok CLI は Claude 互換形式を対象とするが実機確認待ち。
+本文中の `Agent`、`Bash`、`Read` や MCP の名前は Claude 表記の例。利用中のホストで提供された同等のツールを発見して使う。存在しないツール・モデル・実行結果を仮定しない。`${CLAUDE_PLUGIN_ROOT}` の資料パスは、この skill から辿れるプラグインルートに読み替える。
 
 # Santa Method 🎅
 
@@ -96,3 +105,7 @@ rubric の第一ソースは**調査ブリーフ / spec**（[brief-format](../te
 | **Fix Until Nice** | flagged のみ修正 → fresh 再 review | NICE 到達 or 3 iter で escalate |
 
 詳細（reviewer prompt テンプレ、rubric 設計表、failure modes、metrics）: [reference/reviewer-template.md](reference/reviewer-template.md)
+
+## ホスト差分
+
+独立した2名の reviewer をホストのサブエージェント機能で起動する。Claude の Agent やモデル名は例であり、利用可能な既定モデルと対応する委譲ツールを使う。独立実行が利用できなければ、その制約を伝え、独立レビュー完了と判定しない。
