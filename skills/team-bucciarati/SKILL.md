@@ -1,14 +1,18 @@
 ---
 name: team-bucciarati
-description: "JoJo Part 5 Stand-themed quality team for strong, beautiful code — research before development, tests and reviews after, with a three-level review depth menu (quick / deep / adversarial). Use this skill when asked about team composition, review depth, or how to call the stands."
-triggers:
-  - "チーム"
-  - "ブチャラティ"
-  - "スタンド"
-  - "team"
-  - "deep レビュー"
-  - "santa レビュー"
+description: JoJo Part 5 Stand-themed quality team for strong, beautiful code — research
+  before development, tests and reviews after, with a three-level review depth menu
+  (quick / deep / adversarial). Use this skill when asked about team composition,
+  review depth, or how to call the stands.
+metadata:
+  triggers: チーム, ブチャラティ, スタンド, team, deep レビュー, santa レビュー
+  version: 0.20.0
 ---
+
+## ホスト共通の読み方
+
+このディレクトリが共有定義の正本。Claude Code は `.claude-plugin`、Codex は `.codex-plugin` から同じ skills を読む。Grok CLI は Claude 互換形式を対象とするが実機確認待ち。
+本文中の `Agent`、`Bash`、`Read` や MCP の名前は Claude 表記の例。利用中のホストで提供された同等のツールを発見して使う。存在しないツール・モデル・実行結果を仮定しない。`${CLAUDE_PLUGIN_ROOT}` の資料パスは、この skill から辿れるプラグインルートに読み替える。
 
 # Team Bucciarati
 
@@ -72,3 +76,7 @@ JoJo Part 5「チーム・ブチャラティ」をモチーフにした4体の�
 1. **責務分離** — 各スタンドは自分の責務のみ実行し、他のスタンドの領域に踏み込まない
 2. **コミットラインを越えない** — どのスタンドも commit / push / PR / deploy をしない
 3. **santa の独立性** — dual review 中、Moody Blues と Sticky Fingers は互いの評価を見ない（メインセッションが集約する）
+
+## Claude 以外でのチーム実行
+
+ロスター表の opus / sonnet と agents frontmatter は Claude の配分。他ホストでは既定モデルを使い、対応モデルを捏造しない。サブエージェント機能があれば `agents/<role>.md` 本文を指示として渡す。無ければ同名の共有 role skill を直接使い、単一セッションの検証であることを明記する。独立レビューとは扱わない。

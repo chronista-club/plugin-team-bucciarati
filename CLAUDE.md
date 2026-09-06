@@ -24,18 +24,9 @@ scripts/            # 共有スクリプト (detect-ci.sh, check-teamdef.sh, nig
 | Moody Blues | 後: ローカル品質チェック・コードレビュー |
 | Sticky Fingers | 後: 敵対的検証 — 嘘の味（santa-method の独立レビュアー） |
 
-## リリースフロー（nightly 積み方式）
+## リリースフロー
 
-```
-昼   feature PR → squash merge → main に積む（リリースしない）
-夜   scripts/nightly-release.sh が自動棚卸し（毎晩 23:30、スケジュールタスク）
-     新コミットあり → 品質ゲート（check-teamdef / cargo test / clippy）
-     → green なら nightly-YYYYMMDD タグ + GitHub prerelease
-安定  人間の判断で cut: version bump + CHANGELOG + Release + marketplace 同期
-```
-
-- **nightly は plugin.json / marketplace に触れない** — git スナップショット + prerelease のみ。ユーザーに届く経路は安定版だけ（0.17.x のインストール事故の教訓）
-- nightly が品質ゲートで落ちたら翌朝調査（夜中に main を勝手に直さない）
+nightly で開発・検証し、安定版を main + version tag + GitHub Release で配布する。旧 scripts/nightly-release.sh は過去の棚卸し手順であり、このリポジトリでは自動実行しない。
 
 ## 開発ルール
 
