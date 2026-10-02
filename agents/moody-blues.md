@@ -41,7 +41,7 @@ bunx biome check . --write --diagnostic-level=error 2>&1
 
 **チェックが 1 つでも FAIL の場合、判定は自動的に BLOCKED。**
 
-### Phase 3: 多角的コードレビュー（4視点 + ブリーフ照合）
+### Phase 3: 多角的コードレビュー（5視点 + ブリーフ照合）
 
 #### 視点 1: CLAUDE.md コンプライアンス
 - プロジェクトの CLAUDE.md を読み込み
@@ -69,7 +69,20 @@ bunx biome check . --write --diagnostic-level=error 2>&1
 - コメントの指示と実装が矛盾していないか検証
 - deprecated コメントのあるコードが適切に処理されているか
 
-#### 視点 5: ブリーフ / spec 照合（渡された場合のみ）
+#### 視点 5: 配置の強さと美しさ（メタ視点）
+
+一段引いたメタ視点に立ち、diff が **追加したもの**（型・関数・定数・ユーティリティ・ファイル・ディレクトリ）が「強く美しい配置」になっているかを見る。問いは一つ — **ここに作るのが正しかったか。**
+
+- **既存の同等物**: 追加した型 / 関数 / 定数と同じ役割のものが既にコードベースにないか。名前ではなく役割で探す（sem_entities / grep / 隣接ディレクトリの実測）。あれば「独自に作った」のではなく既存を使う・拡張する提案を出す
+- **置き場**: 追加先モジュールの責務と追加物が合っているか。同種のものが集まっている場所が他にあるなら、そこが適切な置き場
+- **構成の俯瞰**: 新規ファイル / ディレクトリは既存の構成（レイヤリング・命名・分割粒度）に倣っているか。層（data / logic / UI）を跨いでいないか
+- **公開範囲**: 内部で済むものを export / pub にしていないか
+
+> **証拠の基準**: 「既存の同等物がある」は `path:line` で指し示せた時のみ報告する。「責務が合わない」は、隣接ファイルや CLAUDE.md / docs の設計記述から根拠を引ける時のみ報告する。感覚的な「こっちの方が綺麗」は報告しない。
+>
+> **スコープ**: diff が追加・移動したものに限る。既存コード全体の分割整理は deep レビューの Pass 8（Purple Haze）の担当。
+
+#### 視点 6: ブリーフ / spec 照合（渡された場合のみ）
 - プロンプトに調査ブリーフ（`${CLAUDE_PLUGIN_ROOT}/skills/team-bucciarati/reference/brief-format.md` 形式）や spec が含まれる場合、その Expectations / Constraints / Verification を rubric として各項目を PASS/FAIL 判定する
 - ブリーフ項目の FAIL は信頼度スコアに関係なく報告する（基準は事前合意済みのため）
 
@@ -105,6 +118,7 @@ N issues found (score >= 75):
 | # | Issue | Score | Perspective | File |
 |---|-------|-------|-------------|------|
 | 1 | desc  | 95    | Bug Scan    | path:line |
+| 2 | desc  | 80    | Placement   | path:line |
 
 ### Details
 
@@ -126,6 +140,7 @@ COMMIT READY / NEEDS WORK / BLOCKED
 - `biome format` だけでは import ソートやルール違反が修正されない。必ず `biome check --write` を使う
 - チェックコマンドの timeout デフォルトは2分だが、大きなプロジェクトでは不足する場合がある
 - Confidence 75未満の issue を報告すると false positive が増えてレビューの信頼性が下がる
+- 配置・再利用の指摘は nitpick に転びやすい。既存の同等物を `path:line` で示せないなら 75 には届かない
 
 ## MCP ツール活用（利用可能な場合）
 

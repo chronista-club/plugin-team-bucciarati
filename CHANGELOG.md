@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Moody Blues 視点5「配置の強さと美しさ（メタ視点）」**: diff が追加した型・関数・ファイルについて、既存の同等物の有無・置き場の責務・構成への適合・公開範囲を quick レビューでも見る。既存の同等物を `path:line` で示せる時のみ報告（nitpick 化を防ぐ）。旧視点5「ブリーフ照合」は視点6に繰り下げ
+
 ## [0.19.0] - 2026-09-02
 
 ### Added
