@@ -33,11 +33,12 @@
 
 補助: 必要なら Purple Haze で個別領域を深掘り
 
-### Pass 2: モジュールごと品質 — Moody Blues（4視点 review）
+### Pass 2: モジュールごと品質 — Moody Blues（5視点 review）
 
 - 各 file の凝集度 / 過度な責務
 - 命名の一貫性 / 公開 API の妥当性
 - CLAUDE.md コンプライアンス、バグスキャン、diff 関連の変更履歴、TODO/FIXME の整合性
+- 配置と再利用（追加物に既存の同等物がないか / 置き場の責務が合うか）— quick でも走る
 
 ### Pass 3: 実行時フロー / threading / IPC — Purple Haze（深掘り研究）
 
