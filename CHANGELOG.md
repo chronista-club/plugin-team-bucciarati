@@ -6,15 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [Unreleased]
+
+## [0.21.0] - 2026-10-02
+
+### Added
+- **Moody Blues 視点5「配置の強さと美しさ（メタ視点）」**: diff が追加した型・関数・ファイルについて、既存の同等物の有無・置き場の責務・構成への適合・公開範囲を quick レビューでも見る。既存の同等物を `path:line` で示せる時のみ報告（nitpick 化を防ぐ）。旧視点5「ブリーフ照合」は視点6に繰り下げ
+
 ## [0.20.0] - 2026-09-06
 
 - 新しい plugin-team-bucciarati リポジトリを正本とし、Claude Code / Codex の共有 skills と配布定義を追加。
 - ホスト固有の前提を明記し、検証・CI・安定配布経路を整備。
-
-## [Unreleased]
-
-### Added
-- **Moody Blues 視点5「配置の強さと美しさ（メタ視点）」**: diff が追加した型・関数・ファイルについて、既存の同等物の有無・置き場の責務・構成への適合・公開範囲を quick レビューでも見る。既存の同等物を `path:line` で示せる時のみ報告（nitpick 化を防ぐ）。旧視点5「ブリーフ照合」は視点6に繰り下げ
 
 ## [0.19.0] - 2026-09-02
 

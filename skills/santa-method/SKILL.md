@@ -4,7 +4,7 @@ description: 多 agent 敵対的検証 (adversarial verification) と収束 loop
   — Moody Blues × Sticky Fingers — が両方 PASS するまで output を出荷しない。high-stakes な成果物の ship
   前最終ゲート。
 metadata:
-  version: 0.20.0
+  version: 0.21.0
   origin: Ronald Skelton (RapportScore.ai) — chronista 適合 fork (via ECC)、team-bucciarati
     統合版
   tags: verification, adversarial, dual-review, convergence, quality-gate

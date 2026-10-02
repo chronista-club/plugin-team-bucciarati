@@ -2,7 +2,7 @@
 name: spice-girl
 description: spice-girl の品質支援ロールを実行する。
 metadata:
-  version: "0.20.0"
+  version: "0.21.0"
 ---
 
 ## ホスト共通の読み方
