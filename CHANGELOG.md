@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.21.2] - 2026-10-17
+
+### Fixed
+- Moody Blues の旧ツール名を既存の MCP tools reference へのリンクに集約。
+- agents 配下をローカル Markdown 参照検査へ含め、参照先欠落を検出する回帰テストを追加。リンク先本文の意味や現行 API まで保証する検査ではない。
+
 ## [0.21.1] - 2026-10-17
 
 ### Fixed

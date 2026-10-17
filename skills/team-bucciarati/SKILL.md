@@ -6,7 +6,7 @@ description: JoJo Part 5 Stand-themed quality team for strong, beautiful code �
   review depth, or how to call the stands.
 metadata:
   triggers: チーム, ブチャラティ, スタンド, team, deep レビュー, santa レビュー
-  version: 0.21.1
+  version: 0.21.2
 ---
 
 ## ホスト共通の読み方
