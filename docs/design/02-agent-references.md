@@ -1,6 +1,6 @@
 # 02. ロール本文の参照を既存検査へ含める
 
-> **Status**: Draft
+> **Status**: Active
 > **Related**: `mem_1Cg7qNf32jB4JLHHGHfnYH`（前提の再検証と構造による改善）
 > **対象**: `agents/moody-blues.md`, `tests/test_distribution.py`
 
@@ -17,3 +17,5 @@ Moody Blues の配置レビューに残っていた旧ツール名を、既存�
 ## Status log
 
 - 2026-10-17: 既存検査ではagentsの欠落参照を検出できないREDを確認。agentsを対象に含めてGREENを確認。未リリース。
+
+- 2026-10-17: v0.21.2 でロール参照の整理と検査を出荷。
