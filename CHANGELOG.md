@@ -8,6 +8,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.21.1] - 2026-10-17
+
+### Fixed
+- mise の集約 `check` を優先し、検出失敗を成功扱いしない。存在しない `test` の補完をやめ、Mac 標準 Bash の空配列にも対応。
+- sem 0.27 の MCP ツール名に案内を更新。CLI との引数差、レビュー補助と検証の境界を明記。
+
+### Changed
+- teamb-check の club-kdl を 0.11 から 0.14 に更新（元コミット 1b68a47）。
+
+
 ## [0.21.0] - 2026-10-02
 
 ### Added

@@ -75,7 +75,7 @@ santa-method の独立レビュアー（Reviewer C）として、成果物（コ
 
 ## MCP ツール活用（利用可能な場合）
 
-利用可能な MCP ツール（gitnexus, sem）があれば claim の実測に使う。特に `sem_blame` / `sem_log` は「コードの来歴に関する主張」の検証に有効。詳細は `${CLAUDE_PLUGIN_ROOT}/skills/team-bucciarati/reference/mcp-tools.md` を参照。
+利用可能な MCP ツール（gitnexus, sem）があれば claim の実測に使う。特に `sem_history`（履歴 / `blame: true`） は「コードの来歴に関する主張」の検証に有効。詳細は `${CLAUDE_PLUGIN_ROOT}/skills/team-bucciarati/reference/mcp-tools.md` を参照。
 
 ## 行動原則
 

@@ -2,7 +2,7 @@
 name: moody-blues
 description: moody-blues の品質支援ロールを実行する。
 metadata:
-  version: "0.21.0"
+  version: "0.21.1"
 ---
 
 ## ホスト共通の読み方

@@ -26,7 +26,7 @@ color: purple
 
 **このフェーズは常に実行する。スキップ不可。**
 
-`${CLAUDE_PLUGIN_ROOT}/scripts/detect-ci.sh` を実行してプロジェクトの品質チェックツールチェーン（typecheck / lint / build / test）を検出し、返された `commands` を順次ローカル実行する。
+`${CLAUDE_PLUGIN_ROOT}/scripts/detect-ci.sh` を実行してプロジェクトの品質チェックツールチェーン（typecheck / lint / build / test）を検出し、返された `commands` を順次ローカル実行する。 mise に `check` があれば集約タスクを優先する。検出が非ゼロ終了、または `commands` が空なら「検証済み」とせず、リポジトリの CI・開発規約から必要なコマンドを確認する。
 
 **フォーマット/lint の事前修正**
 

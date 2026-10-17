@@ -10,16 +10,23 @@ cd "$ROOT"
 if [ -f "mise.toml" ] || [ -f ".mise.toml" ]; then
   RUNNER="mise"
   CMDS=()
-  # mise tasks から利用可能なタスクを検出（JSON 出力で安全にパース）
-  AVAILABLE_TASKS=$(mise task ls --json 2>/dev/null | jq -r '.[].name' 2>/dev/null || mise task ls 2>/dev/null | awk '{print $1}' || echo "")
-  for task in typecheck lint build test; do
-    if echo "$AVAILABLE_TASKS" | grep -qx "$task"; then
-      CMDS+=("mise run $task")
-    fi
-  done
-  # フォールバック: タスクが1つも見つからない場合は test のみ（安全な最小セット）
-  if [ ${#CMDS[@]} -eq 0 ]; then
-    CMDS=("mise run test")
+  # 検出失敗と「既知のタスクなし」を区別する。表示用テーブルから推測しない。
+  if ! AVAILABLE_TASKS=$(mise task ls --json | jq -er '
+    if type == "array" and all(.[]; type == "object" and (.name | type == "string"))
+    then map(.name) | join("\n")
+    else error("expected an array of tasks with string names") end'); then
+    echo "detect-ci: mise task discovery failed; inspect the project check instructions" >&2
+    exit 1
+  fi
+  # 集約された品質ゲートを優先し、独自の validate / sync-check も保つ。
+  if echo "$AVAILABLE_TASKS" | grep -qx 'check'; then
+    CMDS=("mise run check")
+  else
+    for task in typecheck lint build test; do
+      if echo "$AVAILABLE_TASKS" | grep -qx "$task"; then
+        CMDS+=("mise run $task")
+      fi
+    done
   fi
 elif [ -f "Cargo.toml" ]; then
   RUNNER="cargo"
@@ -54,5 +61,5 @@ else
   exit 0
 fi
 
-# JSON 出力（jq で安全にシリアライズ）
-jq -n --arg runner "$RUNNER" --args '{"runner": $runner, "commands": $ARGS.positional}' -- "${CMDS[@]}"
+# macOS の Bash 3.2 でも nounset 下の空配列を展開できる形にする。
+jq -n --arg runner "$RUNNER" --args '{"runner": $runner, "commands": $ARGS.positional}' -- ${CMDS[@]+"${CMDS[@]}"}
