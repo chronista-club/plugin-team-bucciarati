@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.22.0] - 2026-11-28
+
 ### Added
 - **スキル `formal-verification`（Lean 4 / Charon・Aeneas / Quint）**: Chronista 流の3層形式検証（Lean 4 構成的構造証明・空公理・反例定理 / Charon・Aeneas 実 Rust 抽出証明と mutation test / Quint 状態機械モデル検査と比較モード期待表 `check.ts` / 実装対応表と信頼境界 README）を独立スキルとして追加。
 - **4スタンドの一貫分担とレビューフロー統合**: Purple Haze（形式検証ブリーフ設計）、Spice Girl（テストピラミッド + Formal Layer 実装）、Moody Blues（`formal/` の実測チェックと実コード↔モデル間のドリフト検出）、Sticky Fingers（「証明の嘘の味」5観点：公理密輸・空虚な真・モデル捏造・比較モード八百長と Mutation 感度・信頼境界の欺瞞）を接続。

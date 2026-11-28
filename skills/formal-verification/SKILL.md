@@ -3,7 +3,7 @@ name: formal-verification
 description: Chronista 流の形式検証・定理証明（Lean 4 構造モデル / Charon・Aeneas 実 Rust 抽出証明 / Quint 状態機械モデル検査と比較モード反例検証）を設計・生成・検証するスキル。開発の前後で4体のスタンド（Purple Haze / Spice Girl / Moody Blues / Sticky Fingers）が連携し、テストと並行して強く美しいコードの数学的・構造的正しさを保証する。
 metadata:
   triggers: Lean, Quint, Aeneas, 形式証明, 定理証明, 形式検証, formal, モデル検査
-  version: 0.21.2
+  version: 0.22.0
 ---
 
 ## ホスト共通の読み方
