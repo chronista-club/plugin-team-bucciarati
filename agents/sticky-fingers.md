@@ -40,6 +40,12 @@ santa-method の独立レビュアー（Reviewer C）として、成果物（コ
 - **内部一貫性**: セクション A とセクション B は矛盾していないか
 - **rubric 照合**: 各 criterion の pass 条件を満たすか
 - **欺瞞の兆候**: 出典のない数値、検証不能な断定、曖昧語による責任回避
+- **形式検証（Lean 4 / Aeneas / Quint）の嘘の味**: 成果物に `formal/` が含まれる場合、[formal-verification スキル](../skills/formal-verification/SKILL.md) のチェックリストに従い、以下を実測・精査する:
+  1. **公理の密輸**: 全定理に `#print axioms` があるか。手書き Lean で `does not depend on any axioms` 以外の公理（`sorryAx`, `Classical.choice`, `propext`, `Quot.sound` 等）が混入していないか。Aeneas で `sorryAx` や `Classical.choice` が混入していないか
+  2. **空虚な真（Vacuous Truth）**: 前提条件が強すぎて自明に成立する定理や、定数フラグ自体を答えにした不変条件になっていないか
+  3. **モデルの捏造（Model-Code Drift）**: 証明を通すために実コードに存在しないガードや正規化をモデルにだけ足していないか。実装との対応表が実コードの分岐と一致しているか
+  4. **比較モードの八百長と Mutation 感度**: Quint の `ng` 期待モードが構文エラーやタイムアウトではなく明示的な `Invariant violated` で落ちているか。Aeneas の `--mutation-test` で壊した対象定理だけが落ちて残り定理が通るか
+  5. **信頼境界の欺瞞**: README の「保証の範囲と信頼境界」が捨象した要素を隠さず正確に記述しているか
 
 ### Phase 3: 判定（Verdict）
 

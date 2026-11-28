@@ -29,13 +29,13 @@ claude plugin install team-bucciarati@chronista-plugins
 Call any Stand agent directly:
 
 ```
-Purple Haze で調べて
-Spice Girl でテスト書いて
-Moody Blues でレビューして
+Purple Haze で調べて（着手前ブリーフ / 形式検証ブリーフの設計）
+Spice Girl でテスト書いて（ユニット・統合テスト / Lean 4・Aeneas・Quint 形式検証の実装）
+Moody Blues でレビューして（ローカル品質ゲート + formal ドリフト検査）
 santa レビューして（Moody Blues × Sticky Fingers の敵対的 dual review）
 ```
 
-Review depth menu — quick (Moody Blues solo) / deep (8-pass parallel) / adversarial (santa-method). See `skills/team-bucciarati/SKILL.md`.
+Review depth menu — quick (Moody Blues solo) / deep (8-pass parallel) / adversarial (santa-method). See `skills/team-bucciarati/SKILL.md` and `skills/formal-verification/SKILL.md`.
 
 ## License
 

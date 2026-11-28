@@ -31,6 +31,8 @@ Purple Haze の**着手前調査**の出力フォーマット。実装後のレ�
 - V1: ...（pass 条件: ...）
 ```
 
+> **形式検証（Lean 4 / Aeneas / Quint）を含む場合**: [formal-verification スキル](../../formal-verification/SKILL.md) に従い、`Verification` に ① Lean 構造定理候補（空公理・反例定理）、② Aeneas 実抽出メソッド候補（Rust の場合）、③ Quint 不変条件と比較モード期待表（どの規則を外すと `ng` になるか）、④ 信頼境界（何を捨象するか）を記載する。
+
 ## rubric への変換規則
 
 - Expectations / Constraints / Verification の各項目 → rubric criterion（1:1）

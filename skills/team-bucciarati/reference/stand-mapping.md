@@ -15,7 +15,7 @@
 |---|---|
 | **Moody Blues** | Pass 1, 2, 4, 5, 7 |
 | **Purple Haze** | Pass 3, 8 |
-| **Spice Girl** | Pass 4 (testing) |
+| **Spice Girl** | Pass 4 (testing & formal verification) |
 | **Sticky Fingers** | deep では使わない — adversarial（santa-method）専任 |
 
 > Pass 6（UX / accessibility）は手動レビュー。UI 特化 Stand を将来追加する場合のホルダー。
@@ -48,12 +48,12 @@
 
 補助: Moody Blues（diff history で直近の変更が壊してないか）
 
-### Pass 4: 横断的関心事 — Moody Blues + Spice Girl（testing）
+### Pass 4: 横断的関心事 — Moody Blues + Spice Girl（testing & formal verification）
 
 - error handling（graceful fallback / silent fail）
 - logging（level / verbosity / signal/noise 比）
 - security（input validation / SSRF / XSS / IPC injection）
-- testing（coverage gap / boundary condition）→ **Spice Girl**（t-wada 流テストピラミッド観点）
+- testing & formal coverage（coverage gap / boundary condition / 構造法則や状態機械に対する Lean 4・Aeneas・Quint の検証ギャップとモデル同期）→ **Spice Girl**（t-wada 流テストピラミッド + [formal-verification](../../formal-verification/SKILL.md) 観点）
 
 ### Pass 5: 具体バグ / subtle issue — Moody Blues（信頼度スコア 75+ で報告）
 

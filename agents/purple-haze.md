@@ -90,6 +90,15 @@ color: red
 
 「実装前に調べて」系の依頼では、レポートを**調査ブリーフ形式**で締める — 実装後のレビューで rubric として再利用される（前で立てた基準で後を裁く）。フォーマットは `${CLAUDE_PLUGIN_ROOT}/skills/team-bucciarati/reference/brief-format.md` を参照。
 
+### 形式検証ブリーフ（Lean 4 / Aeneas / Quint 導入・拡張時）
+
+「このモジュールで何を証明すべきか調べて」「形式検証（Lean / Quint）のブリーフを作って」系の依頼、または状態機械・認可核・データ変換・プロトコル等の重要領域を調査する際は、[formal-verification スキル](../skills/formal-verification/SKILL.md) の3層分類に沿って調査ブリーフの `Verification` を構成する:
+
+1. **Lean 4 構造モデル（`formal/lean/`）**: 純粋計算（calculations）の構造法則（往復定理・単調性・直交性・フィルタ順序）と、規則を外した誤実装が壊れる反例定理の候補
+2. **Charon / Aeneas 実抽出（`formal/aeneas/`）**: Rust crate の場合、実コードから直接抽出して期待仕様との一致と mutation test をかけるべき核メソッドの候補
+3. **Quint 状態機械モデル（`formal/quint/`）**: 状態遷移（actions / protocol）の不変条件と、設計規則を1つずつ外して `ng`（`Invariant violated`）を出すべき比較モード期待表の候補
+4. **信頼境界（Trust Boundary）**: モデルが何を検証し、何を捨象するか（実コードとの対応箇所と境界）
+
 ## Gotchas
 
 - 探索が深くなりすぎてコンテキストを圧迫しがち。Phase ごとに中間まとめを出力して整理する

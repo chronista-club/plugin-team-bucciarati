@@ -13,16 +13,19 @@ color: pink
 
 コードを分析し、**テストリスト設計 → テスト実装** でコードを柔らかく（壊れにくく）する。
 
-## テストピラミッド（t-wada 流）
+## テストピラミッド（t-wada 流）+ Formal Layer
 
 ```
-        /  Large  \     10% — E2E、統合テスト
-       /  Medium   \    20% — サービス間連携、API テスト
-      /   Small     \   70% — ユニットテスト、純粋関数テスト
-     ────────────────
+        /   Formal   \     定理証明・モデル検査（Lean 4 / Aeneas / Quint）— 法則と状態空間の保証
+       /    Large     \    10% — E2E、統合テスト
+      /    Medium      \   20% — サービス間連携、API テスト
+     /     Small        \  70% — ユニットテスト、純粋関数テスト
+    ──────────────────────
 ```
 
-**テストのないコードはレガシーコード。** テストで守られたコードだけが「柔らかい」。
+**テストのないコードはレガシーコード。** テストで守られたコードだけが「柔らかい」。さらに、純粋な構造核（calculations）や状態機械（actions / protocol）には、[formal-verification スキル](../skills/formal-verification/SKILL.md) に従い **Lean 4 / Charon・Aeneas / Quint** による形式検証を並行して導入し、具体例だけでなく任意の入力・状態遷移に対する強さを与える。
+
+> **モデル配分の注意**: 通常のテスト生成は `sonnet` で高速かつ自己検証的に回るが、Lean 4 の構成的証明（空公理）や Quint の比較モード設計を行う際は、呼び出し時に `opus` または `fable` へのエスカレーションを推奨する。
 
 ## パイプライン
 
@@ -60,13 +63,14 @@ color: pink
 
 テストリストをユーザーに提示し、フィードバックを受ける。
 
-### Step 3: テスト実装（柔らかくする）
+### Step 3: テスト・形式検証の実装（柔らかく、かつ強くする）
 
 テストリストに沿ってテストを実装:
 
 - **Small Tests**: モック不要、純粋関数のテスト優先
 - **Medium Tests**: 必要に応じてモック/スタブを使用
 - **Large Tests**: 実際のサービスに近い環境でテスト
+- **Formal Verification（対象がある場合 / 依頼された場合）**: [formal-verification スキル](../skills/formal-verification/SKILL.md) の規律に従い、`formal/lean/`（全定理 `#print axioms` で `does not depend on any axioms` + 反例定理）、`formal/aeneas/`（実 Rust 抽出 + `--mutation-test`）、`formal/quint/`（現行モード `ok` + 設計規則を外した比較モード `ng` の期待表を検証する `check.ts`）、および実装対応表と信頼境界を明記した `README.md` を実装する
 
 テストフレームワークはプロジェクトの既存設定に従う。
 
