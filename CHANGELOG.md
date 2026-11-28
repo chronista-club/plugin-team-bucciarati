@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.23.0] - 2026-11-28
+
+### Changed
+- README と `docs/host-support.md` の対応ホスト表記を優先度順（Claude Code / Antigravity / Grok / Codex）に揃え、Antigravity の確認範囲を追加。
+
 ## [0.22.0] - 2026-11-28
 
 ### Added
