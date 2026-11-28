@@ -53,15 +53,16 @@ bunx biome check . --write --diagnostic-level=error 2>&1
 - ロジックエラー、null チェック漏れ、型不整合
 - 小さなニットピックは無視、大きなバグのみ
 
-#### 視点 3: diff 関連の変更履歴検証
+#### 視点 3: diff 関連の変更履歴検証と形式検証（`formal/`）ドリフト
 
 **Moody Blues の真骨頂 — ただし diff に関連する範囲に限定。**
 
 - 変更されたファイルの `git log` と `git blame` を確認
 - **直近の変更が今回の修正で壊れていないか** を検証
 - リファクタリングで参照漏れがないか追跡
+- **形式検証（`formal/`）との整合**: リポジトリに `formal/{lean,aeneas,quint}` がある場合、diff が変更した実コード（分岐・定数・順序・エラー型等）に対応するモデル・定理・比較モード・README 対応表が追従しているか確認する（[formal-verification スキル](../skills/formal-verification/SKILL.md) 参照）。また、新しい状態機械や純粋な構造核を追加しているのに `formal/` が未導入なら、導入候補（Idea）として提案する
 
-> **スコープ**: diff に登場するファイル・関数の直近 history のみ。
+> **スコープ**: diff に登場するファイル・関数の直近 history と対応する `formal/` のみ。
 > 広域調査・深堀りリサーチは Purple Haze の担当。
 
 #### 視点 4: コードコメント検証

@@ -50,6 +50,7 @@ Be rigorous. Your job is to find problems, not to approve.
 **領域特化の拡張**:
 
 - **コード**: type safety / error handling / security（secret 露出、injection）/ 新 path のテストカバレッジ
+- **形式検証（Lean 4 / Aeneas / Quint）**: [formal-verification スキル](../../formal-verification/SKILL.md) の基準 — 全定理 `#print axioms` による空公理（手書き Lean は `does not depend on any axioms`、Aeneas は `sorryAx`/`Classical.choice` 不使用）/ 空虚な真（vacuous truth）の排除 / 実コードとモデルの分岐一致 / Quint 比較モード期待表の `ng` が明示的な `Invariant violated` で出ること / Aeneas `--mutation-test` の感度 / README 対応表と信頼境界の正確性
 - **コンテンツ/マーケ**: brand voice / SEO / 商標誤用 / CTA
 - **規制対応**: 結果保証なし / 必須 disclaimer / 認可用語 / 司法管轄言語
 

@@ -10,7 +10,7 @@ JoJo Part 5 スタンドをモチーフにした Claude Code エージェント�
 team.kdl            # ★ SSOT — ロスター/モデル配分/コミットライン境界の構造化ファクト
 .claude-plugin/     # プラグインメタデータ (plugin.json)
 agents/             # スタンドエージェント定義 (4体) — 散文の正はこちら
-skills/             # スキル定義 (team-bucciarati, santa-method)
+skills/             # スキル定義 (team-bucciarati, santa-method, formal-verification + 各ロール)
 mcp-server/         # teamb-check — SSOT ドリフト検出器 (Rust)
 scripts/            # 共有スクリプト (detect-ci.sh, check-teamdef.sh, nightly-release.sh)
 ```

@@ -49,10 +49,14 @@ JoJo Part 5「チーム・ブチャラティ」をモチーフにした4体の�
 
 各スタンドは独立したエージェントとして直接呼び出す:
 
-- 「Purple Haze で調べて」→ 深掘り調査（副作用なし）。着手前調査なら調査ブリーフ形式で締める
-- 「Spice Girl でテスト書いて」→ テストリスト設計・テスト生成
-- 「Moody Blues でレビューして」→ コミット前のローカル品質ゲート（quick）
-- 「santa レビューして」→ Moody Blues × Sticky Fingers の敵対的検証（adversarial）
+- 「Purple Haze で調べて」→ 深掘り調査（副作用なし）。着手前調査なら調査ブリーフ形式で締める（「形式検証のブリーフ作って」で Lean / Aeneas / Quint の証明対象も設計）
+- 「Spice Girl でテスト書いて」→ テストリスト設計・テスト生成（「Lean と Quint 書いて」で [formal-verification](../formal-verification/SKILL.md) に沿った定理証明・モデル検査も実装）
+- 「Moody Blues でレビューして」→ コミット前のローカル品質ゲート（quick: `formal/` の実測チェックと実コード↔モデルのドリフト検出を含む）
+- 「santa レビューして」→ Moody Blues × Sticky Fingers の敵対的検証（adversarial: 証明の嘘の味・公理密輸・比較モードの妥当性も検証）
+
+## 形式検証・定理証明（Lean 4 / Aeneas / Quint）
+
+テスト（Unit / Integration / E2E）と並行して、純粋計算の構造法則（Lean 4）、実 Rust メソッドの抽出証明（Charon / Aeneas）、状態機械と設計規則のモデル検査（Quint）を4スタンドの一貫連携で扱う。呼び出し方と3層の設計規律の正本は [formal-verification スキル](../formal-verification/SKILL.md) を参照。
 
 ## MCP ツール連携
 
