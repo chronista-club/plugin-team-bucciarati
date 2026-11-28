@@ -27,6 +27,10 @@ class Distribution(unittest.TestCase):
             self.assertEqual(data['metadata']['version'],claude['version'])
             self.assertLessEqual(set(data),{'name','description','license','metadata','allowed-tools'})
             self.assertTrue(all(isinstance(v,str) for v in data['metadata'].values()))
+        self.assertTrue((ROOT/'skills/formal-verification/SKILL.md').is_file(), 'formal-verification skill must exist')
+        for stand in ['purple-haze', 'spice-girl', 'moody-blues', 'sticky-fingers']:
+            agent_text = (ROOT/f'agents/{stand}.md').read_text()
+            self.assertIn('formal-verification', agent_text, f'{stand} must reference formal-verification skill')
 
     def test_local_references_and_hook_scripts(self):
         for path in [ROOT/'README.md',*(ROOT/'skills').rglob('*.md'),*(ROOT/'commands').glob('*.md'),*(ROOT/'docs').rglob('*.md'),*(ROOT/'agents').rglob('*.md')]:
